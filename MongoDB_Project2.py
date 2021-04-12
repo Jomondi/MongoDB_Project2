@@ -14,8 +14,8 @@ hosp_data = [
     {'hospital_id': 324, 'hospital_name': 'Kenyatta National', 'bed_count': 78, 'address': '5612 Mbagathi Way'},
     {'hospital_id': 120, 'hospital_name': 'Nairobi National', 'bed_count': 100, 'address': '783 Uhuru  Highway'},
     {'hospital_id': 892, 'hospital_name': 'TUK Hospital', 'bed_count': 49, 'address': '42 City Block'},
-    {'hospital_id': 891, 'hospital_name': 'Egerton University Hospital', 'bed_count': 94, 'address': '412 Moi Ave'}
-]
+    {'hospital_id': 891, 'hospital_name': 'Egerton University Hospital', 'bed_count': 94, 'address': '412 Moi Ave'}]
+
 
 docs_data = [{'doctor_id': 678, 'doctor_name': 'John Maina', 'hospital_id': 324, 'date_joined': '09/19/2012',
               'specialty': 'surgeon', 'salary': 100000, 'experience': '5 years'},
@@ -25,6 +25,7 @@ docs_data = [{'doctor_id': 678, 'doctor_name': 'John Maina', 'hospital_id': 324,
               'specialty': 'mortician', 'salary': 142000, 'experience': '5 years'},
              {'doctor_id': 561, 'doctor_name': 'Paul Embarambara', 'hospital_id': 891, 'date_joined': '01/30/2019',
               'specialty': 'neuro-surgeon', 'salary': 178000, 'experience': '5 years'}]
+
 
 pat_data = [{'patient_id': 827, 'patient_name': 'John Rustu', 'age': 28, 'gender': 'M', 'Inpatient/Outpatient': 'Y',
              'hospital_id': 324},
@@ -46,6 +47,7 @@ def insert_data():
 insert_data()
 
 
+
 def join_collections():
     cursor = database.Hospital.aggregate([
         {
@@ -56,24 +58,29 @@ def join_collections():
                     "foreignField": "hospital_id",
                     "as": "hospital_info"
                 }},
-        {"$unwind": "$hospital_info"},
-        {"$lookup": {
-            "from": "Patient",
-            "localField": "hospital_id",
-            "foreignField": "hospital_id",
-            "as": "hospital_info2"}},
-        {"$unwind": "$hospital_info2"},
-        {"$project": {
-            "_id": 0,
-            "hospital_id": 1,
-            "hospital_name": 1,
-            "patient_name": "$hospital_info2.patient_name",
-            "doctor_name": "$hospital_info.doctor_name",
-            "Inpatient/Outpatient": "$hospital_info2.Inpatient/Outpatient"
+                    {"$unwind": "$hospital_info"},
 
-        }}
+                    {"$lookup": 
+                        {
+                        "from": "Patient",
+                        "localField": "hospital_id",
+                        "foreignField": "hospital_id",
+                        "as": "hospital_info2"}},
 
-    ])
+                    {"$unwind": "$hospital_info2"
+                        },
+                    {"$project":
+                     {
+                        "_id": 0,
+                        "hospital_id": 1,
+                        "hospital_name": 1,
+                        "patient_name": "$hospital_info2.patient_name",
+                        "doctor_name": "$hospital_info.doctor_name",
+                        "Inpatient/Outpatient": "$hospital_info2.Inpatient/Outpatient"
+
+                    }}
+
+                ])
 
     for values in cursor:
         print(values)
