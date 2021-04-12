@@ -3,7 +3,7 @@
 Using Python, create a MongoDB database connection to a database that resides in the Cloud and also local to your
 system - Show your python code and the collection structure (JSON format).
 
-Create two collections with the below schemas and upload data into the collections:
+Create three collections with the below schemas and upload data into the collections:
 
        a) Hospital:
            hospital_id
