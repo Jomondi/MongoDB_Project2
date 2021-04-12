@@ -2,7 +2,7 @@ import ssl
 import pymongo
 
 connection = pymongo.MongoClient(
-    "mongodb+srv://Jomondi:FidelliaAdhiambo@cluster0.lbtqn.mongodb.net/Hospital?retryWrites=true&w=majority",
+    "mongodb+srv://<username>:<password>@cluster0.lbtqn.mongodb.net/Hospital?retryWrites=true&w=majority",
     ssl=True, ssl_cert_reqs=ssl.CERT_NONE)
 
 database = connection['Hospital']
