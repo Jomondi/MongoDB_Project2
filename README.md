@@ -1,6 +1,6 @@
 # Exercise Description
 
-Using Pythong, create a MongoDB database connection to a database that resides in the Cloud and also local to your
+Using Python, create a MongoDB database connection to a database that resides in the Cloud and also local to your
 system - Show your python code and the collection structure (JSON format).
 
 Create two collections with the below schemas and upload data into the collections:
