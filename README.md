@@ -46,19 +46,14 @@ Description of the file:
 
 - Run insert_data() function to insert data into the collections
 <br />
-<br />
 ![Hospital Collection](https://github.com/Jomondi/MongoDB_Project2/blob/main/Images/Hospital_Collection.png)
-<br />
 <br />
 ![Patient Collection](https://github.com/Jomondi/MongoDB_Project2/blob/main/Images/Patient_Collection.png)
 <br />
-<br />
 ![Doctor Collection](https://github.com/Jomondi/MongoDB_Project2/blob/main/Images/Doctor_Collection.png)
-<br />
 <br />
 
 - Run cursor instance to join the tables and print out the values
-<br />
 <br />
 ![Joined Collection](https://github.com/Jomondi/MongoDB_Project2/blob/main/Images/Joined_Collections.png)
 
