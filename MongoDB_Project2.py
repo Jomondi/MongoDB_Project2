@@ -43,7 +43,7 @@ def insert_data():
     print('Data successfully entered!')
 
 
-# insert_data()
+insert_data()
 
 
 def join_collections():
